@@ -1,5 +1,5 @@
 # goit-react-hw-05-movies
-goit-react-hw-04-movies
+goit-react-hw-05-movies
 # Критерии приема
 
 - Создан репозиторий `goit-react-hw-05-movies`
