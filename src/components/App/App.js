@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
-import { NotFoundView } from 'views';
+import { NotFoundView } from 'views/NotFoundView';
 // import { ROUTE_PATHS } from 'services/route-paths';
 
 const App = () => {
