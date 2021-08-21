@@ -15,10 +15,18 @@ export default function pathMaker(path) {
 
 export const ROUTE_PATHS = {
   _: pathMaker('/'),
-  CONTACTS: {
-    _: pathMaker('/contacts'),
+  MOVIES: {
+    _: pathMaker('/movies'),
     BY_ID: {
-      _: pathMaker('/contacts/:contactId'),
+      _: pathMaker('/movies/:movieId'),
+      CAST: { _: pathMaker('/movies/:movieId/cast') },
+      REVIEWS: { _: pathMaker('/movies/:movieId/reviews') },
     },
   },
 };
+
+// CONTACTS: {
+//   _: pathMaker('/contacts'),
+//   BY_ID: {
+//     _: pathMaker('/contacts/:contactId'),
+//   },
