@@ -12,7 +12,7 @@ const getTrendingPage = async (page = 1) => {
   try {
     const {
       data: { total_pages, results },
-    } = await axios.get('/trending/movie/day', {
+    } = await axios.get('/trending/movie/week', {
       params: { page },
     });
     return [results, total_pages];
