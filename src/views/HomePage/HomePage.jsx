@@ -14,7 +14,7 @@ const HomePage = () => {
   return (
     <>
       <h1>Cписок трендов за неделю</h1>
-      <ListMovie></ListMovie>
+      {trandingPage && <ListMovie></ListMovie>}
     </>
   );
 };
