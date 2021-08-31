@@ -8,7 +8,7 @@ axios.defaults.params = { api_key: API_KEY, language: 'en-EN' };
 // - список самых популярных фильмов на сегодня для создания коллекции на главной странице.// https://developers.themoviedb.org/3/trending/get-trending - список самых популярных фильмов на сегодня для создания коллекции на главной странице.
 // https://developers.themoviedb.org/3/trending/get-trending
 
-const getTrendingPage = async (page = 1) => {
+const getTrendingFilms = async (page = 1) => {
   try {
     const {
       data: { total_pages, results },
@@ -79,7 +79,7 @@ const getReviewsID = async movieID => {
 };
 
 const moviesAPI = {
-  getTrendingPage,
+  getTrendingFilms,
   getSearchQuery,
   getDetailsID,
   getCreditsID,

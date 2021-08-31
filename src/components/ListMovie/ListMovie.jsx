@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import Pagination from '@material-ui/lab/Pagination';
-import css from './ListMovie.module.css';
+import { LoaderUI } from 'UI';
+import { PaginationBox } from 'UI';
 import pathIMG from 'services/pathIMG';
-import Loader from 'react-loader-spinner';
+import css from './ListMovie.module.css';
 
 export default function MovieList({
   movies,
@@ -14,7 +14,7 @@ export default function MovieList({
   return (
     <>
       {loading ? (
-        <Loader color="#ff0000" size="23" type="Rings" />
+        <LoaderUI />
       ) : (
         <ul className={css.list}>
           {movies.map(movie => {
@@ -48,15 +48,10 @@ export default function MovieList({
             margin: '0 auto',
           }}
         >
-          <Pagination
+          <PaginationBox
             count={total}
-            variant="outlined"
-            shape="rounded"
-            color="secondary"
-            onChange={(event, pages) => {
-              onChangePage(pages);
-            }}
-            page={currentPage}
+            currentPage={currentPage}
+            onChangePage={onChangePage}
           />
         </div>
       )}

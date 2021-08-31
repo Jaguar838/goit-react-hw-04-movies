@@ -1,40 +1,51 @@
 import { lazy, Suspense } from 'react';
+
 import { Route, Switch } from 'react-router-dom';
-import LoaderUI from 'UI/LoaderUI/LoaderUI';
+import { Layout } from 'UI';
+import { LoaderUI } from 'UI';
+import AppBar from 'components/AppBar/AppBar';
 
-import { NotFoundView } from 'views/NotFoundView';
-// import { ROUTE_PATHS } from 'services/route-paths';
+// import { NotFoundView } from 'views/NotFoundView';
+import { ROUTE_PATHS } from 'services/route-paths';
 
-// const HomeView = lazy(() =>
-//   import('views/HomePage/HomePage' /* webpackChunkName: "home-view" */),
-// );
-// const MoviesView = lazy(() =>
-//   import('views/MoviesPage/MoviesPage' /* webpackChunkName: "movies-view" */),
-// );
+const HomeView = lazy(() =>
+  import('../../views/HomePage/HomePage' /* webpackChunkName: "home-view" */),
+);
 
-// const MovieDetailsView = lazy(() =>
-//   import(
-//     'views/MovieDetailsPage/MovieDetailsPage' /* webpackChunkName: "movie-details-view" */
-//   ),
-// );
-
-const NotFoundViewL = lazy(() =>
+const SearchMoviesView = lazy(() =>
   import(
-    '../NotFoundPage/NotFoundPage.jsx' /* webpackChunkName: "not-found-view" */
+    '../../views/SearchMoviesPage/SearchMoviesPage' /* webpackChunkName: "movies-view" */
   ),
 );
 
-console.log('NotFoundViewL', NotFoundView);
+const MovieDetailsView = lazy(() =>
+  import(
+    '../../views/MovieDetailsPage/MovieDetailsPage' /* webpackChunkName: "movie-details-view" */
+  ),
+);
+
+const NotFoundView = lazy(() =>
+  import(
+    '../../views/NotFoundPage/NotFoundPage.jsx' /* webpackChunkName: "not-found-view" */
+  ),
+);
+
+console.log('ROUTE_PATHS', ROUTE_PATHS);
 
 const App = () => {
   return (
     <>
-      <Suspense fallback={<LoaderUI />}>
-        <Switch>
-          {/* <Route path={ROUTE_PATHS._()} exact component={ContactsView} /> */}
-          <Route component={NotFoundViewL} />
-        </Switch>
-      </Suspense>
+      <Layout>
+        <AppBar />
+        <Suspense fallback={<LoaderUI />}>
+          <Switch>
+            <Route path="/" exact component={HomeView} />
+            <Route path="/movies" exact component={SearchMoviesView} />
+            <Route path="/movies/:movieId" component={MovieDetailsView} />
+            <Route component={NotFoundView} />
+          </Switch>
+        </Suspense>
+      </Layout>
     </>
   );
 };

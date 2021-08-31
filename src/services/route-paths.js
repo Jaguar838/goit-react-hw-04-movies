@@ -2,6 +2,7 @@ const PARAM_PREFIX = ':';
 
 export default function pathMaker(path) {
   return function createPath(params = {}) {
+    console.log(Object.entries(params));
     return Object.entries(params).reduce(
       (resultPath, [key, value]) =>
         resultPath.replace(
@@ -24,7 +25,7 @@ export const ROUTE_PATHS = {
     },
   },
 };
-
+// console.log('ROUTE_PATHS', ROUTE_PATHS);
 // CONTACTS: {
 //   _: pathMaker('/contacts'),
 //   BY_ID: {
